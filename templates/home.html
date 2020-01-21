@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %} 
+    <div id="container">
+            {% include 'includes/navigator.html' %}
+            <div class="cooroot-logo"></div>
+        </div>
+
+    <div id="releases-container">
+        <div class="cover-pic-container">
+            <div class="track">
+            </div>
+        </div>
+    </div>
+
+    <div id="about-container">
+        <p></p>
+    </div>
+
+    <div id="contact-container">
+        <div class="contact-form">
+            <form>
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="firstname" placeholder="Enter your name...">
+
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lastname" placeholder="Enter your last name...">
+
+                <label for="subject">Subject</label>
+                <textarea id="subject" name="subject" placeholder="Write something..."></textarea>
+
+                <input type="submit" value="SUBMIT">
+            </form>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
