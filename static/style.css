@@ -52,23 +52,22 @@ body, html {
     margin: 200px auto;
 }
 
-#releases-container {
-    width: 100%;
-    height: 100vh;
-    background-color: #00afb5;
-}
-
 #about-container {
     width: 100%;
     height: 100vh;
     background-color: #ffb700;
 }
 
+#releases-container {
+    width: 100%;
+    height: 100vh;
+    background-color: #00afb5;
+}
+
 #contact-container {
     width: 100%;
     height: 100vh;
-    background-color: #111;
-    padding: 150px;
+    background-color: #111; 
 }
 
 .contact-form {
@@ -76,7 +75,7 @@ body, html {
     flex-direction: row;
     width: 80vw;
     height: 70vh;
-    margin-top: 15vh;
+    padding: 250px 250px;
 }
 
 input[type=text], textarea {
