@@ -35,7 +35,7 @@ body, html {
 }
 
 #container {
-    background-image: url("https://wallpaperaccess.com/full/32819.jpg");
+    background-image: url("img/background.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
     width: 100%;
@@ -44,7 +44,7 @@ body, html {
 }
 
 .cooroot-logo {
-    background-image: url("img/");
+    background-image: url("img/Cooroot-Logo-Transparent.png");
     background-position: center;
     background-size: 700px 700px;
     width: 500px;
