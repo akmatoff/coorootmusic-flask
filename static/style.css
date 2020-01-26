@@ -1,3 +1,8 @@
+@font-face {
+    font-family: San Francisco;
+    src: url(fonts/sm\ SFNSDisplay-Regular.ttf);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -6,6 +11,7 @@ body, html {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    font-family: San Francisco;
 }
 
 .navigator {
@@ -16,22 +22,26 @@ body, html {
 }
 
 .navigator-inner {
+    display: flex;
+    flex-direction: row;
     float: right;
+    overflow: hidden;
 }
 
 .navigator-inner a {
     text-decoration: none;
     color: #ffeeffee;
-    font-family: arial;
+    display: block;
     font-weight: bold;
     font-size: 20px;
     padding: 10px;
+    text-align: center;
     text-shadow: 2px 2px rgba(0,0,0,0.5);
 }
 
 .navigator-inner a:hover {
     color: #33ffcc;
-    transition: 0.6s ease;
+    transition: 0.6s ease; 
 }
 
 #container {
@@ -52,22 +62,66 @@ body, html {
     margin: 200px auto;
 }
 
+#social-media-container {
+    display: flex;
+    padding: 5px 5px;
+    width: 150px;
+    margin-top: -3%;
+    justify-content: space-around;
+}
+
+#social-media {
+    display: block;
+}
+
+#social-media-container a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    font-size: 22px;
+}
+
+#social-media-container a:hover {
+    color: #33ffcc;
+}
+
 #about-container {
+    background-image: url("img/about-background.jpg");
+    background-position: center;
+    background-size: 100%;
     width: 100%;
     height: 100vh;
-    background-color: #ffb700;
+}
+
+#about-inner {
+    width: 60%;
+    height: 850px;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    margin: auto;
+}
+
+#about-inner > p {
+    color: #fff;
+    font-size: 20px;
+    text-shadow: 2px 1px 3px rgba(0,0,0,0.5);
 }
 
 #releases-container {
+    background-image: url("img/releases-background.jpg");
+    background-position: center;
+    background-size: 100%;
     width: 100%;
     height: 100vh;
-    background-color: #00afb5;
 }
 
 #contact-container {
+    background-image: url("img/contact-background.jpg");
+    background-position: center;
+    background-size: 100%;
     width: 100%;
     height: 100vh;
-    background-color: #111; 
 }
 
 .contact-form {
