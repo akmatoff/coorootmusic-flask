@@ -128,6 +128,26 @@ body, html {
     background-size: 100%;
     width: 100%;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+#releases-inner {
+  display: flex;
+  width: 90%;
+  height: 80vh;
+  align-self: center;
+}
+
+#releases-inner h1, p {
+  font-size: 22px;
+  color: white;
+}
+
+#cover-container {
+  flex-direction: row;
+  width: 100px;
+  height: 170px;
 }
 
 #contact-container {
