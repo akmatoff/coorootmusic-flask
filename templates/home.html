@@ -33,16 +33,18 @@
 
     <div id="releases-container">
         <div id="releases-inner">
-          <h1>Releases</h1>
+          {% for release in releases %}
             <div id="track-container">
                 <div id="cover-container">
+                    <img src="{{ release.cover }}">
                 </div>
                 <div id="title-container">
                     <p id="track-title">
-                      
+                        <strong>{{release.artist }}</strong> <br> {{ release.title }} <br> {{ release.genre }}
                     </p>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 
