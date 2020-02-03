@@ -19,5 +19,9 @@ app.debug = True
 def index():
   return render_template('home.html', releases = Releases)
 
+@app.route('/releases/<string:id>/')
+def release(id):
+  return render_template('release.html', release = release)  
+
 if __name__ == "__main__":
-  app.run(host = 'localhost')
+  app.run(host = '0.0.0.0')

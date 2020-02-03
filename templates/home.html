@@ -25,6 +25,7 @@
 
     <div id="about-container">
         <div id="about-inner">
+          <h1>ABOUT COOROOT</h1>
             <p>Welcome to Cooroot's official web page. Cooroot is a sound producer from unknown country in Central Asia since february 2016. He produces music in genres such as dubstep, trap, future bass etc. But mostly make dubstep, because it's favorite electronic music genre.
                 You can listen to Cooroot's tracks right from this website, because it got its own audio player. Wish you a good journey in our website!
             </p>
@@ -36,7 +37,7 @@
           {% for release in releases %}
             <div id="track-container">
                 <div id="cover-container">
-                    <img src="{{ release.cover }}">
+                    <a href="release/{{release.id}}"><img src="{{ release.cover }}"></a>
                 </div>
                 <div id="title-container">
                     <p id="track-title">
