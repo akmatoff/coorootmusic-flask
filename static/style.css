@@ -168,11 +168,12 @@ body, html {
     flex-direction: column;
     width: 224px;
     box-shadow: rgba(0,0,0,0.5) 6px 5px 6px;
-    border-color: #f1f1f1f1;
+    /* border-color: #f1f1f1f1;
     border-width: 1px;
-    border-style: solid;
+    border-style: solid; */
     border-radius: 30px;
     cursor: pointer;
+    justify-content: space-around;
 }
 
 #track-container:hover #track-title {
@@ -189,6 +190,8 @@ body, html {
 #cover-container {
   width: 220px;
   height: 270px;
+  padding: 0.8px 0;
+  margin: auto;
 }
 
 #cover-container img {
@@ -196,6 +199,7 @@ body, html {
     border-top-right-radius: 30px;
     width: 220px;
     height: 270px;
+    justify-items: center;
 }
 
 #title-container {
@@ -241,6 +245,7 @@ label {
     color: white;
     font-family: Helvetica;
     font-weight: bold;
+    padding: 0 10px;
 }
 
 input[type=submit] {
@@ -255,11 +260,18 @@ input[type=submit] {
 }
 
 #player-container {
-    width: 100%;
-    height: 70px;
-    display: block;
-    background-color: #ffeeffee;
-    position: fixed;
-    bottom: 0;
-    filter: opacity(0.9);
+    width: 300px;
+    height: 400px;
+    display: flex;
+    background-color: rgba(217, 217, 217, 0.8);
+    justify-content: right;
+    position: absolute;
+    border-radius: 30px;
+    right: 30vh;
+    top: 30vh;
+}
+
+#player-inner {
+  width: 150px;
+  height: 250px;
 }

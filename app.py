@@ -19,7 +19,7 @@ app.debug = True
 def index():
   return render_template('home.html', releases = Releases)
 
-@app.route('/releases/<string:id>/')
+@app.route('/release/<string:id>/')
 def release(id):
   return render_template('release.html', release = release)  
 
