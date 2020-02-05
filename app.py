@@ -24,4 +24,4 @@ def release(id):
   return render_template('release.html', release = release)  
 
 if __name__ == "__main__":
-  app.run(host = '0.0.0.0')
+  app.run(host = 'coorootmusic.netlify.com')
