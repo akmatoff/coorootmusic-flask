@@ -1,10 +1,20 @@
 <div id="player-container">
-    <div id="track-cover">
-    </div>
-    <div id="track-title">Cooroot - Text Me</div>
-    <div id="player-controller">
-        <a id="prev-button" class="fas fa-angle-left"></a>
-        <a id="play-button" class="fa fa-play" onclick="playOrPauseTrack()"></a>
-        <a id="next-button" class="fas fa-angle-right"></a>
+    <div id="player-inner">
+        <div id="player-controller">
+            <a id="prev-button" class="fas fa-angle-left"></a>
+            <a id="play-button" class="fa fa-play" onclick="playOrPauseTrack()"></a>
+            <a id="next-button" class="fas fa-angle-right"></a>
+        </div>
+        <div id="player-seek-bar-container">
+            <div id="seek-bar">
+                <div id="fill">
+                    <div id="handle"></div>
+                </div>
+                
+            </div>
+        </div>
+        <div id="track-cover">
+        </div>
+        <div id="track-title"><span id="artist">Cooroot</span><br><span id="title">Text Me</span></div>
     </div>
 </div>
