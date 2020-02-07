@@ -1,44 +1,106 @@
+// Array with all the tracks
 var tracks = [
     'static/audio/Cooroot - Memories.mp3',
     'static/audio/Cooroot - About You.mp3',
     'static/audio/Cooroot - Thoughts.mp3',
     'static/audio/Cooroot - Wastelands.mp3',
-    'static/audio/Cooroot - Hate.mp3',
+    'static/audio/Cooroot - Bottle Of Rum.mp3',
     'static/audio/Cooroot - Feelings.mp3',
     'static/audio/Cooroot - Text Me.mp3',
     'static/audio/Cooroot - Lost.mp3',
     'static/audio/Cooroot - Butterflies.mp3',
     'static/audio/Cooroot - Purgatory.mp3',
-    'static/audio/Cooroot - Rocket Science.mp3'
+    'static/audio/Cooroot - Rocket Science.mp3',
+    'static/audio/Cooroot - Whatever.mp3'
 ]
 
-var track = new Howl({
-    src: ['static/audio/Cooroot - Text Me.mp3']
-})
-
+// Array with all the covers
 var covers = [
-    'img/Releases/Cooroot - Memories EP.png',
-    'img/Releases/Cooroot - Bottle Of Rum.png',
-    'img/Releases/Cooroot - Butterflies.png',
-    'img/Releases/Cooroot - Feelings.png',
-    'img/Releases/Cooroot - Hate.jpg',
-    'img/Releases/Cooroot - Lost.png',
-    'img/Releases/Cooroot - Rocket Science.png',
-    'img/Releases/Cooroot - Text Me.png',
-    'img/Releases/Cooroot - Wastelands.png',
-    'img/Releases/Cooroot - Whatever.png'
+    'static/img/Releases/Cooroot - Memories EP.png',
+    'static/img/Releases/Cooroot - Memories EP.png',
+    'static/img/Releases/Cooroot - Memories EP.png',
+    'static/img/Releases/Cooroot - Wastelands.png',
+    'static/img/Releases/Cooroot - Bottle Of Rum.png',
+    'static/img/Releases/Cooroot - Feelings.png',
+    'static/img/Releases/Cooroot - Text Me.png',
+    'static/img/Releases/Cooroot - Lost.png',
+    'static/img/Releases/Cooroot - Butterflies.png',
+    'static/img/Releases/Full Flex Audio - UUS3.png',
+    'static/img/Releases/Cooroot - Rocket Science.png',
+    'static/img/Releases/Cooroot - Whatever.png'
 ]
 
-var playButton = document.getElementById('play-button');
-var player = document.getElementById('player-container');
+var titles = ['Memoreis', 'About You', 'Thoughts', 'Wastelands', 'Bottle Of Rum', 'Feelings', 'Text Me', 'Lost', 'Butterflies', 'Purgatory', 'Rocket Science', 'Whatever']
 
+// Creating variables for HTML elements
+var trackCover = document.getElementById('track-cover');
+var fillBar = document.getElementById('fill');
+var handle = document.getElementById('handle');
+var trackTitle = document.getElementById('title');
+var playButton = document.getElementById('play-button');
+var prevButton = document.getElementById('prev-button');
+var nextButton = document.getElementById('next-button');
+var trackCurrentTime = document.getElementById('track-current-time');
+var trackDuration = document.getElementById('track-duration');
+var currentTrack = 0;
+
+var track = new Audio();
+
+track.src = tracks[currentTrack];
+trackCover.style.backgroundImage = "url('" + covers[currentTrack] + "')";
+trackTitle.innerHTML = titles[currentTrack]
+
+trackDuration.innerHTML = track.duration;
+trackCurrentTime.innerHTML = track.currentTime;
+
+// Function to play or pause a track
 function playOrPauseTrack() {
-    if (track.playing()) {
-        playButton.className = 'fa fa-play';
-        track.pause();
-    } else {
-        track.play();
+    if (track.paused) {
         playButton.className = 'fa fa-pause';
+        track.play();
+    } else {
+        track.pause();
+        playButton.className = 'fa fa-play';
     }
 }
 
+function nextSong() {
+    track.stop;
+
+    if (currentTrack >= tracks.length - 1) {
+        currentTrack = 0;
+    } else {
+        currentTrack++;
+    }
+
+    track.src = tracks[currentTrack];
+    trackCover.style.backgroundImage = "url('" + covers[currentTrack] + "')";
+    trackTitle.innerHTML = titles[currentTrack];
+
+    track.play();
+    playButton.className = 'fa fa-pause';
+
+}
+
+function prevSong() {
+    track.stop;
+
+    if (currentTrack <= 0) {
+        currentTrack = tracks.length - 1;
+    } else {
+        currentTrack--;
+    }
+
+    track.src = tracks[currentTrack];
+    trackCover.style.backgroundImage = "url('" + covers[currentTrack] + "')";
+    trackTitle.innerHTML = titles[currentTrack];
+    track.play();
+    playButton.className = 'fa fa-pause';
+}
+
+track.addEventListener('timeupdate', () => {
+    var position = track.currentTime / track.duration;
+
+    fillBar.style.width = position * 100 + 'vh';
+    handle.style.marginLeft = position * 100 + 'vh';
+})
