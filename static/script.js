@@ -35,7 +35,8 @@ var titles = ['Memoreis', 'About You', 'Thoughts', 'Wastelands', 'Bottle Of Rum'
 // Creating variables for HTML elements
 var trackCover = document.getElementById('track-cover');
 var fillBar = document.getElementById('fill');
-var handle = document.getElementById('handle');
+var seekBar = document.getElementById('seek-bar');
+// var handle = document.getElementById('handle');
 var trackTitle = document.getElementById('title');
 var playButton = document.getElementById('play-button');
 var prevButton = document.getElementById('prev-button');
@@ -45,13 +46,15 @@ var trackDuration = document.getElementById('track-duration');
 var currentTrack = 0;
 
 var track = new Audio();
+var dragging = false;
 
 track.src = tracks[currentTrack];
 trackCover.style.backgroundImage = "url('" + covers[currentTrack] + "')";
 trackTitle.innerHTML = titles[currentTrack]
 
-trackDuration.innerHTML = track.duration;
-trackCurrentTime.innerHTML = track.currentTime;
+window.addEventListener('load', () => {
+    duration(Math.round(track.duration));
+})
 
 // Function to play or pause a track
 function playOrPauseTrack() {
@@ -64,7 +67,7 @@ function playOrPauseTrack() {
     }
 }
 
-function nextSong() {
+function nextTrack() {
     track.stop;
 
     if (currentTrack >= tracks.length - 1) {
@@ -82,7 +85,7 @@ function nextSong() {
 
 }
 
-function prevSong() {
+function prevTrack() {
     track.stop;
 
     if (currentTrack <= 0) {
@@ -98,9 +101,56 @@ function prevSong() {
     playButton.className = 'fa fa-pause';
 }
 
+// Event if time updates
 track.addEventListener('timeupdate', () => {
     var position = track.currentTime / track.duration;
 
-    fillBar.style.width = position * 100 + 'vh';
-    handle.style.marginLeft = position * 100 + 'vh';
+    fillBar.style.width = position * 100 + '%';
+
+    convertTime(Math.round(track.currentTime));
+
+    if (track.ended) {
+        nextTrack();
+    }
 })
+
+// Slide track to a certain time
+seekBar.addEventListener('mousedown', (e) => {
+    var clickPosition = e.clientX - e.target.offsetLeft;
+    track.currentTime = (clickPosition / e.target.offsetWidth) * track.duration;
+    dragging = true;
+
+}, false);
+
+// Event on moving mouse
+seekBar.addEventListener('mousemove', (e) => {
+    if (dragging) {
+    var clickPosition = e.clientX - e.target.offsetLeft;
+    track.currentTime = (clickPosition / e.target.offsetWidth) * track.duration;
+    }
+});
+
+// Event on stop holding the mouse
+seekBar.addEventListener('mouseup', (e) => {
+    dragging = false;
+})
+
+function convertTime(seconds) {
+    var min = Math.floor(seconds / 60);
+    var sec = seconds % 60;
+
+    min = (min < 10) ? "0" + min : min;
+    sec = (sec < 10) ? "0" + sec : sec;
+    trackCurrentTime.textContent = min + ":" + sec;
+    duration(Math.round(track.duration));
+}
+
+// Create 2 digit format instead of 1
+function duration(seconds) {
+    var min = Math.floor(seconds / 60);
+    var sec = seconds % 60;
+
+    min = (min < 10) ? "0" + min : min;
+    sec = (sec < 10) ? "0" + sec : sec;
+    trackDuration.textContent = min + ":" + sec;
+}

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, g
+from flask import Flask, render_template, redirect
 from data import Releases
 
 Releases = Releases()
