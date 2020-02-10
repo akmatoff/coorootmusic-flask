@@ -12,7 +12,7 @@ def index():
 
 @app.route('/release/<string:id>/')
 def release(id):
-  return render_template('release.html', release = release)  
+  return render_template('release.html', releases = Releases)  
 
 if __name__ == "__main__":
   app.run()
