@@ -2,7 +2,6 @@ from flask import Flask, render_template, redirect
 from data import Releases
 
 Releases = Releases()
-
 app = Flask(__name__)
 app.debug = True
 

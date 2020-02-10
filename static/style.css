@@ -58,6 +58,15 @@ body, html {
     height: 100vh;
     padding: 50px 50px;
     display: flex;
+    justify-content: center;
+}
+
+#container-inner {
+    width: 50%;
+    height: 80vh;
+    padding: 10px 10px;
+    display: flex;
+    align-self: center;
 }
 
 #logo-container {
