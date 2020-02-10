@@ -1,13 +1,17 @@
 {% extends 'layout.html' %}
 
 {% block title %}
+    {{ release.title }}
 {% endblock %}
 
-{%block content %}
+{% block content %}
 
 <div id="container">
     <div id="container-inner">
-        <h1></h1>
+        {{ release.id }}
+        <h1>{{release.title}}</h1>
+        {{release.artist}}
+        {{release.genre}}
     </div>
 </div>
 
